@@ -441,125 +441,177 @@ export default definePlugin({
     },
 
     injectStyles() {
-        const css = `
-            .vc-ai-modal {
-                max-width: 600px;
-            }
-            
-            .vc-ai-modal-title {
-                margin-right: 16px;
-                margin-bottom: 8px;
-            }
-            
-            .vc-ai-modal-header {
-                padding-bottom: 8px;
-            }
-            
-            .vc-ai-context-messages {
-                background-color: var(--background-secondary);
-                border-radius: 8px;
-                padding: 12px;
-                max-height: 160px;
-                overflow-y: auto;
-                margin-bottom: 16px;
-            }
-            
-            .vc-ai-context-message {
-                padding: 4px 0;
-                opacity: 0.9;
-            }
-            
-            .vc-ai-context-message strong,
-            .vc-ai-current-message strong,
-            .vc-ai-message-colon {
-                color: var(--header-primary);
-                font-weight: 600;
-            }
-            
-            .vc-ai-context-message span,
-            .vc-ai-current-message span,
-            .vc-ai-response {
-                color: var(--text-normal);
-            }
-            
-            .vc-ai-current-message {
-                padding: 4px 0;
-                border-top: 1px solid var(--background-tertiary);
-                margin-top: 4px;
-                font-weight: 500;
-            }
-            
-            .vc-ai-prompt-input {
-                width: 95%;
-                padding: 8px;
-                background-color: var(--background-secondary);
-                border: 1px solid var(--background-tertiary);
-                border-radius: 4px;
-                color: var(--text-normal);
-                font-family: var(--font-primary);
-                font-size: 14px;
-                resize: vertical;
-                outline: none;
-                transition: border-color .2s ease-in-out;
-            }
-            
-            .vc-ai-prompt-input:focus {
-                border-color: var(--text-link);
-            }
-            
-            .vc-ai-response-container {
-                animation: fadeIn 0.5s ease-in-out forwards;
-                margin-bottom: 20px;
-            }
-            
-            .vc-ai-response {
-                white-space: pre-wrap;
-                background-color: var(--background-secondary);
-                border-radius: 8px;
-                padding: 12px;
-                font-size: 14px;
-                line-height: 1.4;
-            }
-            
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            
-            .vc-ai-error-card {
-                padding: 12px;
-                margin-top: 12px;
-                margin-bottom: 16px;
-                background-color: rgba(237, 66, 69, 0.1);
-                border-left: 4px solid var(--status-danger);
-                border-radius: 4px;
-            }
-            
-            .vc-ai-error-card .vc-ai-error-title {
-                color: var(--header-primary);
-                font-size: 16px;
-                font-weight: 600;
-                margin-bottom: 8px;
-            }
-            
-            .vc-ai-modal-content {
-                padding-bottom: 16px;
-            }
-            
-            .vc-ai-footer-buttons {
-                display: flex;
-                gap: 8px;
-                background: none;
-            }
-        `;
+    const css = `
+        .vc-ai-modal {
+            max-width: 600px;
+        }
+        
+        .vc-ai-modal-title {
+            margin-right: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .vc-ai-modal-header {
+            padding-bottom: 8px;
+        }
+        
+        .vc-ai-context-messages {
+            background-color: var(--background-secondary);
+            border-radius: 8px;
+            padding: 12px;
+            max-height: 160px;
+            overflow-y: auto;
+            margin-bottom: 16px;
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        
+        .vc-ai-context-message {
+            padding: 4px 0;
+            opacity: 0.9;
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        
+        .vc-ai-context-message strong,
+        .vc-ai-current-message strong,
+        .vc-ai-message-colon {
+            color: var(--header-primary);
+            font-weight: 600;
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        
+        .vc-ai-context-message span,
+        .vc-ai-current-message span,
+        .vc-ai-response {
+            color: var(--text-normal);
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        
+        .vc-ai-current-message {
+            padding: 4px 0;
+            border-top: 1px solid var(--background-tertiary);
+            margin-top: 4px;
+            font-weight: 500;
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        
+        .vc-ai-prompt-input {
+            width: 95%;
+            padding: 8px;
+            background-color: var(--background-secondary);
+            border: 1px solid var(--background-tertiary);
+            border-radius: 4px;
+            color: var(--text-normal);
+            font-family: var(--font-primary);
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+            transition: border-color .2s ease-in-out;
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        
+        .vc-ai-prompt-input:focus {
+            border-color: var(--text-link);
+        }
+        
+        .vc-ai-response-container {
+            animation: fadeIn 0.5s ease-in-out forwards;
+            margin-bottom: 20px;
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        
+        .vc-ai-response {
+            white-space: pre-wrap;
+            background-color: var(--background-secondary);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            line-height: 1.4;
+            user-select: text;
+            -webkit-user-select: text;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .vc-ai-error-card {
+            padding: 12px;
+            margin-top: 12px;
+            margin-bottom: 16px;
+            background-color: rgba(237, 66, 69, 0.1);
+            border-left: 4px solid var(--status-danger);
+            border-radius: 4px;
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        
+        .vc-ai-error-card .vc-ai-error-title {
+            color: var(--header-primary);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        
+        .vc-ai-modal-content {
+            padding-bottom: 16px;
+        }
+        
+        .vc-ai-footer-buttons {
+            display: flex;
+            gap: 8px;
+            background: none;
+        }
 
-        const style = document.createElement("style");
-        style.textContent = css;
-        style.id = "ai-message-assistant-styles";
-        document.head.appendChild(style);
+        .vc-ai-context-messages::-webkit-scrollbar,
+        .vc-ai-response::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        .vc-ai-context-messages::-webkit-scrollbar-track,
+        .vc-ai-response::-webkit-scrollbar-track {
+            background-color: var(--scrollbar-auto-track);
+            border-radius: 10px;
+        }
+        
+        .vc-ai-context-messages::-webkit-scrollbar-thumb,
+        .vc-ai-response::-webkit-scrollbar-thumb {
+            background-color: var(--scrollbar-auto-thumb);
+            border-radius: 10px;
+            border: 2px solid var(--scrollbar-auto-track);
+        }
+        
+        .vc-ai-context-messages::-webkit-scrollbar-thumb:hover,
+        .vc-ai-response::-webkit-scrollbar-thumb:hover {
+            background-color: var(--scrollbar-auto-thumb-hover);
+        }
 
-        this.styleElement = style;
-    },
+        .vc-ai-context-messages,
+        .vc-ai-response {
+            scrollbar-width: thin;
+            scrollbar-color: var(--scrollbar-auto-thumb) var(--scrollbar-auto-track);
+        }
+    `;
+
+    const style = document.createElement("style");
+    style.textContent = css;
+    style.id = "ai-message-assistant-styles";
+    document.head.appendChild(style);
+
+    this.styleElement = style;
+},
 
     removeStyles() {
         if (this.styleElement) {
